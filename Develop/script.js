@@ -16,12 +16,11 @@ generateBtn.addEventListener("click", writePassword);
 //Start of testing
 
 //Arrays of character types
-var lowercaseABC=["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var uppercaseABC=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-var otherChar = [ "!", "#", "$","%","&","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","`","{","|","}","~"]
+var letters=["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var otherChar = [ "!", "#", "$","%","&","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","`","{","|","}","~"];
 var number = Math.floor(Math.random()*10);
 
-var randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)]
+var randomLetter = letters[Math.floor(Math.random() * letters.length)]
 
 var randomCharacter = otherChar[Math.floor(Math.random() * otherChar.length)]
 
@@ -48,6 +47,7 @@ function generatePassword(){
   //password is generated based on conditions
   for(var i = 0; i < length; i++){
     console.log(passArray[Math.floor(Math.random() * letter.length)]
+    
     )}
 }
 
