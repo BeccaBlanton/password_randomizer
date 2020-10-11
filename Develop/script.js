@@ -30,23 +30,26 @@ console.log(randomLetter)
 console.log(randomCharacter)
 
 function generatePassword(){
-  passwordLength = prompt("Please pick your password length between 8-128 characters long");
-    return (passwordlength);
-  addNum = prompt("Do you need at least one Numeral?");
-    return(true);
-
-  addChar = prompt("Would you want to add Special Characters?");
-return(true)
-}
-
+  var passArray =letters
 //once Presses button, give prompts of options for criteria
 
-//criteria options for password
+  var passwordLength = prompt("Please pick your password length between 8-128 characters long");
 
-//prompt for length of password 8-128 characters
+  //prompt for character types:  lowercase, uppercase, numeric, and/or special characters
+  var addNum = confirm("Do you want to add Numerals?");
+  var addChar = confirm("Would you want to add Special Characters?");
 
-//prompt for character types:  lowercase, uppercase, numeric, and/or special characters
+  if(addNum){
+    passArray = passArray.concat(number)
+  }
+  if(addChar){
+    passArray = passArray.concat(addChar)
+  }
+  //password is generated based on conditions
+  for(var i = 0; i < length; i++){
+    console.log(passArray[Math.floor(Math.random() * letter.length)]
+    )}
+}
 
-//make sure at least one character type is chosen.
-//password is generated based on conditions
-//alerted or written to page for user
+
+
