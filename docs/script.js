@@ -21,19 +21,20 @@ var passArray =letters
 
 
 
-
+//function runs as soon as user hits button
 function generatePassword(){
 //once Presses button, give prompts of options for criteria
   var passwordLength = prompt("Please pick your password length between 8-128 characters long");
   console.log(passwordLength)
+
+//set range of acceptable password length for responses.
   if (passwordLength < 8 || passwordLength > 128) {
    passwordLength = prompt("Password Must be between 8-128 characters long");
   }
   //prompt for character types: numeric, and/or special characters
-  var addNum = confirm("Do you want Numbers in your password?");
-  var addChar = confirm("Do you want Special Characters in your password?");
-  //turn result into a string
-  var result = ' ';
+  var addNum = confirm("Do you want Numbers in your password? Hit cancel if no");
+  var addChar = confirm("Do you want Special Characters in your password? Hit cancel if no");
+  
 //adds numbers and/or special characters into Large Password Array if selected.
   if(addNum === true) {
     passArray = passArray.concat(number)
@@ -44,6 +45,8 @@ function generatePassword(){
     console.log(passArray)
 
   }
+//turn result into a string
+  var result = ' ';
 //loops for given length from passwordLength prompt
   for(var i = 0; i < passwordLength; i++) {
     console.log("loop count" + i)
