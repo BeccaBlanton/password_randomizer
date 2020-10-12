@@ -18,7 +18,7 @@ var otherChar = [ "!", "#", "$","%","&","(",")","*","+",",","-",".","/",":",";",
 var number = [0,1,2,3,4,5,6,7,8,9]
 //base Array containing all upper and lowercase letters
 var passArray =letters
-//turn result into a string
+
 
 
 
@@ -26,9 +26,13 @@ function generatePassword(){
 //once Presses button, give prompts of options for criteria
   var passwordLength = prompt("Please pick your password length between 8-128 characters long");
   console.log(passwordLength)
+  if (passwordLength < 8 || passwordLength > 128) {
+   passwordLength = prompt("Password Must be between 8-128 characters long");
+  }
   //prompt for character types: numeric, and/or special characters
   var addNum = confirm("Do you want Numbers in your password?");
   var addChar = confirm("Do you want Special Characters in your password?");
+  //turn result into a string
   var result = ' ';
 //adds numbers and/or special characters into Large Password Array if selected.
   if(addNum === true) {
