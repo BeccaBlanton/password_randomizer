@@ -13,11 +13,19 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 //Arrays of character types
-var letters=["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var lowerLetters=["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var upperLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var otherChar = [ "!", "#", "$","%","&","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","`","{","|","}","~"];
 var number = [0,1,2,3,4,5,6,7,8,9]
-//base Array containing all upper and lowercase letters
-var passArray =letters
+
+//to create a randomIndex for guaranteeing each type
+function randomIndex(arr){
+  return arr[Math.floor(Math.random() * arr.length)]
+}
+//blank array variables for creating randomized arrays
+var passArray = []
+var randomizedPassword = []
+var guaranteed = []
 
 
 
@@ -32,27 +40,46 @@ function generatePassword(){
    passwordLength = prompt("Password Must be between 8-128 characters long");
   }
   //prompt for character types: numeric, and/or special characters
+  var addLower = true
+  var addUpper = confirm("Do you want to include Uppercase letters in your password? Hit cancel if no")
   var addNum = confirm("Do you want Numbers in your password? Hit cancel if no");
   var addChar = confirm("Do you want Special Characters in your password? Hit cancel if no");
+
+ 
   
 //adds numbers and/or special characters into Large Password Array if selected.
-  if(addNum === true) {
-    passArray = passArray.concat(number)
-    console.log(passArray)
-  }
-  if(addChar === true) {
-    passArray = passArray.concat(otherChar)
-    console.log(passArray)
-
-  }
-//turn result into a string
-  var result = ' ';
-//loops for given length from passwordLength prompt
-  for(var i = 0; i < passwordLength; i++) {
-    console.log("loop count" + i)
-    result = result + passArray[Math.floor(Math.random()* passArray.length)];
-
-    console.log(result)
-  }
-  return result;
+if(addLower){
+  passArray = passArray.concat(lowerLetters)
+  guaranteed.push(randomIndex(lowerLetters))
 }
+
+  if(addUpper){
+    passArray = passArray.concat(upperLetters)
+    guaranteed.push(randomIndex(upperLetters))
+  }
+  if(addNum) {
+    passArray = passArray.concat(number)
+    guaranteed.push(randomIndex(number))
+  }
+  if(addChar) {
+    passArray = passArray.concat(otherChar)
+    guaranteed.push(randomIndex(otherChar))
+
+  }
+  console.log(passArray)
+  console.log(guaranteed)
+
+
+//loops for given length from passwordLength prompt
+//combining one array with each type selected with larger array to desired length
+  for(var i = 0; i < parseInt(passwordLength); i++) {
+    randomizedPassword.push(randomIndex(passArray))
+  }
+  for(var i = 0; i < guaranteed.length; i++){
+      randomizedPassword[i] = guaranteed[i]
+  }
+  return randomizedPassword.join('')
+}
+console.log(randomizedPassword)
+
+  
